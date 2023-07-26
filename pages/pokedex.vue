@@ -26,15 +26,13 @@ async function search() {
 			<button>Who's that Pokemon?</button>
 		</form>
 
-		<Pokemon v-if="pokemon">{{ pokemon.name }}</Pokemon>
+		<PokemonCard :name="pokemon.name"></PokemonCard>
 
 		<ul>
-			<Pokemon v-for="pokemon in pokemons">{{ pokemon.name }}</Pokemon>
+			<PokemonCard
+				v-for="pokemon in pokemons"
+				:name="pokemon.name"
+			></PokemonCard>
 		</ul>
-
-		<Pokemon>Pikachu</Pokemon>
-		<Pokemon>Bulbasaur</Pokemon>
-		<Pokemon>Charmander</Pokemon>
-		<Pokemon>Squirtle</Pokemon>
 	</div>
 </template>
