@@ -1,0 +1,9 @@
+<template>
+	<div>
+		<h1>POKEDEX</h1>
+		<Pokemon>Pikachu</Pokemon>
+		<Pokemon>Bulbasaur</Pokemon>
+		<Pokemon>Charmander</Pokemon>
+		<Pokemon>Squirtle</Pokemon>
+	</div>
+</template>
