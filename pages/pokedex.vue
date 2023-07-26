@@ -1,18 +1,15 @@
 <script setup>
 const query = ref('');
-const pokemons = ref([]);
 const pokemon = ref([]);
 
-const { results } = await $fetch(
+const { data: pokemons } = await useFetch(
 	`https://pokeapi.co/api/v2/pokemon?offset=0&limit=10000`
 );
-pokemons.value = results;
 
 async function search() {
-	const { id, name } = await $fetch(
+	const { name } = await $fetch(
 		`https://pokeapi.co/api/v2/pokemon/${query.value}`
 	);
-	pokemon.value.id = id;
 	pokemon.value.name = name;
 }
 </script>
@@ -26,13 +23,13 @@ async function search() {
 			<button>Who's that Pokemon?</button>
 		</form>
 
-		<PokemonCard :name="pokemon.name"></PokemonCard>
+		<PokemonCard v-if="pokemon.name" :name="`${pokemon.name}`" />
 
 		<ul>
 			<PokemonCard
-				v-for="pokemon in pokemons"
+				v-for="pokemon in pokemons.results"
 				:name="pokemon.name"
-			></PokemonCard>
+			/>
 		</ul>
 	</div>
 </template>
