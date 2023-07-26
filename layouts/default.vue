@@ -1,6 +1,9 @@
 <template>
 	<div>
-		Some default layout shared across all pages
+		<nav>
+			<NuxtLink to="/">Home</NuxtLink>
+			<NuxtLink to="/pokedex">Pokedex</NuxtLink>
+		</nav>
 		<slot />
 	</div>
 </template>
