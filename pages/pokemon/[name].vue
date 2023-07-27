@@ -8,7 +8,7 @@ const { data } = await useFetch(
 		transform(data) {
 			return {
 				name: data.name[0].toUpperCase() + data.name.slice(1),
-				sprite: data.sprites.front_default,
+				artwork: data.sprites.other['official-artwork']['front_default'],
 			};
 		},
 	}
@@ -18,6 +18,6 @@ const { data } = await useFetch(
 <template>
 	<div>
 		<h1>{{ data.name }}</h1>
-		<img :src="data.sprite" />
+		<img :src="data.artwork" />
 	</div>
 </template>

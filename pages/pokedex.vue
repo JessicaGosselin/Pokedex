@@ -25,11 +25,11 @@ async function search() {
 
 		<PokemonCard v-if="pokemon.name" :name="`${pokemon.name}`" />
 
-		<ul>
+		<div>
 			<PokemonCard
 				v-for="pokemon in pokemons.results"
 				:name="pokemon.name"
 			/>
-		</ul>
+		</div>
 	</div>
 </template>
