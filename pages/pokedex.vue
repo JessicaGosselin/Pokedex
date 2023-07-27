@@ -7,10 +7,11 @@ const { data: pokemons } = await useFetch(
 );
 
 async function search() {
-	const { name } = await $fetch(
+	const { name, url } = await $fetch(
 		`https://pokeapi.co/api/v2/pokemon/${query.value}`
 	);
 	pokemon.value.name = name;
+	pokemon.value.url = url;
 }
 </script>
 
@@ -25,12 +26,20 @@ async function search() {
 
 		<PokemonCard v-if="pokemon.name" :name="`${pokemon.name}`" :apiURL="`${pokemon.url}`" />
 
-		<div>
+		<div class="pokedex">
 			<PokemonCard
 				v-for="pokemon in pokemons.results"
 				:name="pokemon.name"
-				:apiURL="`${pokemon.url}`"
+				:apiURL="pokemon.url"
 			/>
 		</div>
 	</div>
 </template>
+
+<style scoped>
+	.pokedex {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px;
+	}
+</style>

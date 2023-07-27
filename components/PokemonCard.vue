@@ -8,7 +8,7 @@ const { data: pokemon } = await useFetch(
 		transform(data) {
 			return {
 				name: data.name[0].toUpperCase() + data.name.slice(1),
-				artwork: data.sprites.other['official-artwork']['front_default'],
+				//artwork: data.sprites.other['official-artwork']['front_default'],
 			};
 		},
 	}
@@ -20,7 +20,7 @@ const { data: pokemon } = await useFetch(
 	<div>
 		<NuxtLink :to="`/pokemon/${name}`">
 			<h1>{{ pokemon.name }}</h1>
-			<img :src="pokemon.artwork" />
+			<!-- <img :src="pokemon.artwork" /> -->
 		</NuxtLink>
 	</div>
 </template>
