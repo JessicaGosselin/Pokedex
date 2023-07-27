@@ -4,7 +4,7 @@ const route = useRoute();
 const { data } = await useFetch(
 	`https://pokeapi.co/api/v2/pokemon/${route.params.name}`,
 	{
-		key: `/pokemon/${route.params.name}`,
+		key: `pokemon-${route.params.name}`,
 		transform(data) {
 			return {
 				name: data.name[0].toUpperCase() + data.name.slice(1),

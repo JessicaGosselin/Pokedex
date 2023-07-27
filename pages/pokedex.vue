@@ -3,7 +3,7 @@ const query = ref('');
 const pokemon = ref([]);
 
 const { data: pokemons } = await useFetch(
-	`https://pokeapi.co/api/v2/pokemon?offset=0&limit=10000`
+	`https://pokeapi.co/api/v2/pokemon?offset=0&limit=151`
 );
 
 async function search() {
@@ -23,12 +23,13 @@ async function search() {
 			<button>Who's that Pokemon?</button>
 		</form>
 
-		<PokemonCard v-if="pokemon.name" :name="`${pokemon.name}`" />
+		<PokemonCard v-if="pokemon.name" :name="`${pokemon.name}`" :apiURL="`${pokemon.url}`" />
 
 		<div>
 			<PokemonCard
 				v-for="pokemon in pokemons.results"
 				:name="pokemon.name"
+				:apiURL="`${pokemon.url}`"
 			/>
 		</div>
 	</div>
