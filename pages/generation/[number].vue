@@ -1,11 +1,18 @@
 <script setup>
 const route = useRoute();
-const pokemon = ref([]);
 
 const genNumber = route.params.number;
 const { data: generation } = await useFetch(
 	`https://pokeapi.co/api/v2/generation/${route.params.number}`
 );
+
+generation.value.pokemon_species.sort(sortFunction);
+
+function sortFunction(a, b) {
+	let a_id = +a.url.replace('https://pokeapi.co/api/v2/pokemon-species/', '').replace('/', '');
+	let b_id = +b.url.replace('https://pokeapi.co/api/v2/pokemon-species/', '').replace('/', '');
+    return (a_id < b_id) ? -1 : 1;
+}
 
 </script>
 
